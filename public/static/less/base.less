@@ -1,0 +1,108 @@
+/*-----------------------------------------------------------------------------------------
+	/Less variables / mixins
+-----------------------------------------------------------------------------------------*/
+
+//Fonts
+@font-body: Helvetica, Arial;
+@weight-regular: 400;
+@weight-bold: 700;
+
+.bold {
+    font-weight: @weight-bold;
+}
+
+
+
+//Colors
+@color-bg: #171718;
+@color-body: #FFF;
+@p1-font-size: 15px;
+@p2-font-size: 40px;
+
+/*-----------------------------------------------------------------------------------------
+	/Base
+-----------------------------------------------------------------------------------------*/
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: @color-body;
+    font-family: @font-body;
+    font-size: 16px;
+    background: @color-bg;
+    line-height: 30px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0.2em;
+
+    &:last-child {
+        margin-bottom: 20px;
+    }
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+    margin: 2em 0;
+    padding: 0;
+    clear: both;
+}
+
+/*-----------------------------------------------------------------------------------------
+	/Headings
+-----------------------------------------------------------------------------------------*/
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+
+/*-----------------------------------------------------------------------------------------
+	/Containment
+-----------------------------------------------------------------------------------------*/
+.mw-15 {
+    max-width: 15em;
+}
+
+@media (min-width: 43.75em) {
+    .mw-30 {
+        max-width: 30em;
+    }
+
+    .mw-42 {
+        max-width: 42em;
+    }
+
+    .mw-50 {
+        max-width: 50em;
+    }
+
+    .mw-60 {
+        max-width: 60em;
+    }
+
+    .mw-65 {
+        max-width: 65em;
+    }
+
+    .mw-100 {
+        max-width: 100em;
+    }
+}
+
