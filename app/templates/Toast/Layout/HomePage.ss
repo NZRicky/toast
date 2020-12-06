@@ -60,7 +60,7 @@
         </div>
 
         <div class="w-6/12 float-right">
-            <form>
+           <%-- <form>
                 $Section3_Copy
                 <div class="form-field w-6/12 float-left md:pr-2"><input type="text" placeholder="Name"></div>
                 <div class="form-field w-6/12 float-right"><input type="text" placeholder="Email"></div>
@@ -68,7 +68,9 @@
 
                 <button>Submit</button>
 
-            </form>
+            </form>--%>
+
+            $ContactForm
 
         </div>
     </div>

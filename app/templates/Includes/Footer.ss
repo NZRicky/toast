@@ -18,17 +18,17 @@
             </a>
         </div>
         <div class="w-3/12">
-            © 2018 Toast Design. Terms & Conditions.
+            $SiteConfig.FooterCopyright
         </div>
 
         <div class="w-5/12 text-center">
-            CALL +64 9 489 2726
+            CALL $SiteConfig.CompanyPhone
         </div>
         <div class="w-3/12 text-right social-icons">
            <span><?xml version="1.0" encoding="UTF-8"?>
                <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Combined Shape</title>
+    <title>Silverstripe Logo</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="HOME" transform="translate(-1433.000000, -3148.000000)">
             <rect id="Rectangle" fill="#171718" x="0" y="-8" width="1640" height="5548"></rect>
@@ -42,7 +42,7 @@
                 <?xml version="1.0" encoding="UTF-8"?>
                 <svg width="9px" height="20px" viewBox="0 0 9 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Shape</title>
+    <title>Facebook Logo</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="HOME" transform="translate(-1480.000000, -3148.000000)">
             <rect id="Rectangle" fill="#171718" x="0" y="-8" width="1640" height="5548"></rect>
@@ -57,7 +57,7 @@
                 <?xml version="1.0" encoding="UTF-8"?>
                 <svg width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Combined Shape</title>
+    <title>LinkedIn Logo</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="HOME" transform="translate(-1517.000000, -3148.000000)">
             <rect id="Rectangle" fill="#171718" x="0" y="-8" width="1640" height="5548"></rect>
@@ -72,7 +72,7 @@
                 <?xml version="1.0" encoding="UTF-8"?>
                 <svg width="13px" height="20px" viewBox="0 0 13 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Shape</title>
+    <title>Google map</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="HOME" transform="translate(-1565.000000, -3148.000000)">
             <rect id="Rectangle" fill="#171718" x="0" y="-8" width="1640" height="5548"></rect>

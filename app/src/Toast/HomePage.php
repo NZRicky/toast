@@ -6,6 +6,8 @@ namespace Toast;
 use Page;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
+use SilverStripe\Forms\EmailField;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TextField;
 
@@ -40,14 +42,21 @@ class HomePage extends Page
         $fields = parent::getCMSFields();
 
         // Hero
-        $fields->addFieldToTab('Root.Hero',
-            TextField::create('Hero_Header','Hero Header'));
-        $fields->addFieldToTab('Root.Hero',
-            HTMLEditorField::create('Hero_Text','Hero Text'));
+        $fields->addFieldToTab(
+            'Root.Hero',
+            TextField::create('Hero_Header','Hero Header')
+        );
+        $fields->addFieldToTab(
+            'Root.Hero',
+            HTMLEditorField::create('Hero_Text','Hero Text')
+        );
 
         // Section 1
         $fields->addFieldToTab('Root.Section',
-            TextField::create('Section1_Heading','Section 1 Heading'));
+            TextField::create(
+                'Section1_Heading',
+                'Section 1 Heading')
+        );
         $fields->addFieldToTab('Root.Section',
             $section1Image = UploadField::create('Section1_Image','Section 1 Image'));
 
@@ -85,4 +94,18 @@ class HomePage extends Page
 
         return $fields;
     }
+
+    public function ContactForm()
+    {
+        FieldList::create(
+            TextField::create('Name','')
+                ->setAttribute('placeholder', 'Name'),
+            EmailField::create('Email','')
+                ->setAttribute('placeholder', 'Email'),
+            TextField::create('Company','')
+                ->setAttribute('placeholder', 'Company')
+        );
+    }
+
+
 }
