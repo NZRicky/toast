@@ -11409,6 +11409,7 @@ button {
 -----------------------------------------------------------------------------------------*/
 fieldset {
   border: none;
+  padding: 0px;
 }
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -11422,6 +11423,10 @@ form button {
 }
 form p:first-child {
   margin-bottom: 20px;
+}
+form span.message {
+  color: #d00;
+  width: 100%;
 }
 .form-field {
   position: relative;

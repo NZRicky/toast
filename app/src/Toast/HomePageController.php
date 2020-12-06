@@ -30,9 +30,18 @@ class HomePageController extends PageController
             $this,
             'ContactForm',
             FieldList::create(
-                TextField::create('Name','Name'),
-                EmailField::create('Email', 'Email'),
-                TextField::create('Company', 'Company')
+                TextField::create('Name','')
+                    ->setFieldHolderTemplate('Form\\FormField_holder')
+                    ->setAttribute('placeholder', 'Name')
+                    ->addExtraClass('form-field w-6/12 float-left md:pr-2'),
+                EmailField::create('Email', '')
+                    ->setFieldHolderTemplate('Form\\FormField_holder')
+                    ->setAttribute('placeholder', 'Email')
+                    ->addExtraClass('form-field w-6/12 float-right'),
+                TextField::create('Company', '')
+                    ->setFieldHolderTemplate('Form\\FormField_holder')
+                    ->setAttribute('placeholder', 'Company')
+                    ->addExtraClass('form-field w-full')
             ),
             FieldList::create(
                 FormAction::create('handleContactForm', 'Submit')
@@ -47,7 +56,8 @@ class HomePageController extends PageController
         $contactForm->setValidator($required);
 
         // debug only, can be removed in production
-        $contactForm->setAttribute('novalidate', true);
+        $contactForm->setAttribute('novalidate', true)
+            ->setRedirectToFormOnValidationError(true);
 
         $contactForm->setTemplate('Form\\ContactForm');
 
@@ -91,7 +101,7 @@ class HomePageController extends PageController
             }
 
             $form->sessionMessage('Thanks for your message.', 'good');
-            return $this->redirectBack();
+            return $this->redirect('/#Form_ContactForm');
         } catch (\Exception $ex) {
             // todo: log error?
             die($ex->getMessage());

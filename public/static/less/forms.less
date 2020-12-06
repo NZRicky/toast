@@ -3,6 +3,7 @@
 -----------------------------------------------------------------------------------------*/
 fieldset {
     border: none;
+    padding: 0px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -19,6 +20,13 @@ form {
     p:first-child {
         margin-bottom: 20px;
     }
+
+    span {
+        &.message {
+            color: #d00;
+            width: 100%;
+        }
+    }
 }
 
 .form-field {
@@ -30,15 +38,17 @@ form {
     margin: 0 0 .5rem;
     min-height: 3.5rem;
 }
-input[type=text] {
-    background: #3E3E3E;
-    padding: 1.5rem 2rem;
-    width: 100%;
-    -ms-flex: 1;
-    flex: 1;
-    border: 4px solid transparent;
-    transition: .15s;
-    outline: 0;
-    color: #fff;
+input {
+    &[type=text], &[type=email] {
+        background: #3E3E3E;
+        padding: 1.5rem 2rem;
+        width: 100%;
+        -ms-flex: 1;
+        flex: 1;
+        border: 4px solid transparent;
+        transition: .15s;
+        outline: 0;
+        color: #fff;
 
+    }
 }

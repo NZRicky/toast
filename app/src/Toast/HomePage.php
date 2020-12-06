@@ -95,7 +95,7 @@ class HomePage extends Page
         return $fields;
     }
 
-    public function ContactForm()
+/*    public function ContactForm()
     {
         FieldList::create(
             TextField::create('Name','')
@@ -105,7 +105,7 @@ class HomePage extends Page
             TextField::create('Company','')
                 ->setAttribute('placeholder', 'Company')
         );
-    }
+    }*/
 
 
 }
