@@ -1,0 +1,14 @@
+---
+Name: toast-logging
+Only:
+  environment: dev
+---
+SilverStripe\Core\Injector\Injector:
+  Psr\Log\LoggerInterface:
+    calls:
+      FileLogger: [ pushHandler, [ %$FileLogger ] ]
+  FileLogger:
+    class: Monolog\Handler\StreamHandler
+    constructor:
+      - "../log/errors.log"
+      - "error"
