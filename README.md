@@ -2,6 +2,8 @@
 
 Simple one page website built by SilverStripe ([http://silverstripe.org](http://silverstripe.org)).
 
+Please see the demo here:  http://toast.rickyli.co.nz
+
 ## Env sample ##
 
 > SS_DATABASE_CLASS="MySQLDatabase"  
