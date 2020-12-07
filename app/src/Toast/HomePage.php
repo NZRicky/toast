@@ -17,6 +17,8 @@ class HomePage extends Page
     private static $db = [
         'Hero_Header'       => 'Varchar',
         'Hero_Text'         => 'HTMLText',
+        'Hero_Button_Label' => 'Varchar',
+        'Hero_Button_Link'  => 'Varchar',
         'Section1_Heading'  => 'Varchar',
         'Section1_Text'     => 'HTMLText',
         'Section1_Copy'     => 'HTMLText',
@@ -49,6 +51,14 @@ class HomePage extends Page
         $fields->addFieldToTab(
             'Root.Hero',
             HTMLEditorField::create('Hero_Text','Hero Text')
+        );
+        $fields->addFieldToTab(
+            'Root.Hero',
+            TextField::create('Hero_Button_Label','Hero Button Label')
+        );
+        $fields->addFieldToTab(
+            'Root.Hero',
+            TextField::create('Hero_Button_Link','Hero Button Link')
         );
 
         // Section 1

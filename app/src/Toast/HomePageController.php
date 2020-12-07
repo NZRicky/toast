@@ -4,6 +4,7 @@
 namespace Toast;
 
 use PageController;
+use Psr\Log\LoggerInterface;
 use SilverStripe\Control\Email\Email;
 use SilverStripe\Core\Environment;
 use SilverStripe\Forms\EmailField;
@@ -19,6 +20,30 @@ class HomePageController extends PageController
     private static $allowed_actions = [
         'ContactForm'
     ];
+
+    private static $dependencies = [
+        'Logger' => '%$' . LoggerInterface::class,
+    ];
+
+
+    /** @var LoggerInterface */
+    protected $logger;
+
+    protected function init()
+    {
+        $this->logger->debug("Start logging home page...");
+        parent::init();
+    }
+
+    /**
+     * @param LoggerInterface $logger
+     * @return $this
+     */
+    public function setLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+        return $this;
+    }
 
     /**
      * Contact form
@@ -55,7 +80,6 @@ class HomePageController extends PageController
 
         $contactForm->setValidator($required);
 
-        // debug only, can be removed in production
         $contactForm->setAttribute('novalidate', true)
             ->setRedirectToFormOnValidationError(true);
 
@@ -78,6 +102,9 @@ class HomePageController extends PageController
         $company = $data['Company'];
 
         try {
+            // todo: require more validation here?
+
+            // Save to database
             $contact = Contact::create();
             $contact->Name = $name;
             $contact->Email = $email;
@@ -85,26 +112,34 @@ class HomePageController extends PageController
             $contact->write();
 
             // send notification email to admin
-            $email = Email::create()
-                ->setHTMLTemplate('Email\\NotificationEmail')
-                ->setData([
-                    'Name' => $name,
-                    'Email' => $email,
-                    'Company' => $company
-                ])
-                ->setFrom('noreply@email.com')
-                ->setTo(Environment::getEnv('ADMIN_EMAIL'))
-                ->setSubject('Contact form submission data.');
+            try {
+                $email = Email::create()
+                    ->setHTMLTemplate('Email\\NotificationEmail')
+                    ->setData([
+                        'Name' => $name,
+                        'Email' => $email,
+                        'Company' => $company
+                    ])
+                    ->setFrom('noreply@email.com')
+                    ->setTo(Environment::getEnv('ADMIN_EMAIL'))
+                    ->setSubject('Contact form submission data.');
 
-            if (!$email->send()) {
-                throw new \Exception('Unable to send notification email');
+                if (!$email->send()) {
+                    throw new \Exception('Unable to send notification email');
+                }
+            } catch (\Exception $ex) {
+                // log email process to file,
+                // but we still let it continue to show successful result to frontend
+                $this->logger->error($ex->getMessage());
             }
 
             $form->sessionMessage('Thanks for your message.', 'good');
             return $this->redirect('/#Form_ContactForm');
         } catch (\Exception $ex) {
-            // todo: log error?
-            die($ex->getMessage());
+            // Show friendly response to frontend and log the error to investigate
+            $this->logger->error($ex->getMessage());
+            $form->sessionMessage('Sorry, we are unable to process your request. Please try again later.');
+            return $this->redirect('/#Form_ContactForm');
         }
     }
 }
