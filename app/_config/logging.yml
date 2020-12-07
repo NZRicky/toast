@@ -1,7 +1,5 @@
 ---
 Name: toast-logging
-Only:
-  environment: dev
 ---
 SilverStripe\Core\Injector\Injector:
   Psr\Log\LoggerInterface:
